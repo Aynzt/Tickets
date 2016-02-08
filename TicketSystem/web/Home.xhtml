@@ -1,12 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:autre="http://java.sun.com/jsf/composite/ezcomp/autres">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Accueil</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <p:layout>
+            <p:layoutUnit position="center">
+                <f:facet name="header">
+                    <autre:Header/>
+                </f:facet>
+                
+                <p:menubar>
+                    <p:submenu label="Module">
+                        <p:menuitem value="Validation"/>
+                        <p:menuitem value="Traitement"/>
+                        <p:menuitem value="Transfert"/>
+                        <p:menuitem value="Assignation"/>
+                    </p:submenu>
+                    
+                    <p:submenu label="Options">
+                        <p:menuitem/>
+                        <p:menuitem/>
+                        <p:menuitem/>
+                        <p:menuitem/>
+                    </p:submenu>
+                </p:menubar>
+                
+                <f:facet name="footer">
+                    <autre:Footer/>
+                </f:facet>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>
 
