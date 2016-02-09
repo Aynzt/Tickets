@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -9,5 +11,39 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <p:dialog closable="true" closeOnEscape="true" dynamic="true" 
+                  header="Modifier une Requête" widgetVar="deleteDialog"
+                  modal="true">
+            
+            <h:form id="deleteform">
+                
+                <p:growl globalOnly="true" life="3000" id="msg"/>
+                
+                <p:panelGrid columns="2" style="border: none">
+                    <p:outputLabel value="Code"/>
+                    <p:inputText value="#{homeMB.r2.reqcode}" readonly="true"/>
+
+                    <p:outputLabel value="Objet"/>
+                    <p:inputText value="#{homeMB.r2.reqobj}" readonly="true"/>
+
+                    <p:outputLabel value="Motif"/>
+                    <p:inputTextarea value="#{homeMB.r2.reqmotif}" readonly="true"/>
+
+                    <p:outputLabel value="User"/>
+                    <p:inputText value="#{homeMB.r2.usrcode}" readonly="true"/>
+                    
+                    <p:outputLabel value="Application"/>
+                    <p:inputText value="#{homeMB.r2.appcode}" readonly="true"/>
+                    
+                    <p:outputLabel value="type"/>
+                    <p:inputText value="#{homeMB.r2.reqtype}" readonly="true"/>
+                    
+                    <p:outputLabel value="Statut"/>
+                    <p:inputText value="#{homeMB.r2.reqstatut}" readonly="true"/>
+                    
+                    <p:commandButton value="Supprimer" action="#{homeMB.delete()}" update="@all"/>
+                </p:panelGrid>             
+            </h:form>            
+        </p:dialog>
     </cc:implementation>
 </html>

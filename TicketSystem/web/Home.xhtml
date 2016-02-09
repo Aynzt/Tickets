@@ -13,13 +13,13 @@
         <p:layout>
             <p:layoutUnit position="center">
                 <f:facet name="header">
-                    <autre:Header/>
+                    <autre:Header NomPage="Accueil"/>
                 </f:facet>
                 
                 <h:form>
                     <p:menubar>
                         <p:submenu label="Module">
-                            <p:menuitem value="Validation"/>
+                            <p:menuitem value="Validation" url="Validation.xhtml"/>
                             <p:separator/>
                             <p:menuitem value="Traitement"/>
                             <p:separator/>
@@ -51,11 +51,11 @@
                                 
                                 <p:separator/>
                                 
-                                <p:menuitem value="Modifier"/>
+                                <p:menuitem value="Modifier" onclick="PF('editDialog').show()" update=":edit:editform"/>
                                 
                                 <p:separator/>
                                 
-                                <p:menuitem value="Supprimer"/>                                
+                                <p:menuitem value="Supprimer" onclick="PF('deleteDialog').show()" update=":delete:deleteform"/>                                
                             </p:menuButton>
                         </f:facet>
                     </p:toolbar>
@@ -123,7 +123,8 @@
         
         <req:Add/>
         <req:Add2/>
-        
+        <req:Update id="edit"/>
+        <req:Delete id="delete"/>
     </h:body>
 </html>
 

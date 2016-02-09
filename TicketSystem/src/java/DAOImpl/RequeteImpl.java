@@ -36,7 +36,7 @@ public class RequeteImpl implements RequeteService{
     public void ajouter(Requete r) {
 
         try {
-            query = "insert into Requests values(?.?.?.?.?.?.?.?)"; 
+            query = "insert into Requests values(?,?,?,?,?,?,?,?)"; 
             
             prep = conn.prepareStatement(query);
             
@@ -115,7 +115,165 @@ public class RequeteImpl implements RequeteService{
         List<Requete> liste = new ArrayList();
         Requete r;
         
-        query = "select *  from requests";
+        query = "select *  from Requests";
+            
+        try {
+            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            result = prep.executeQuery();
+            
+            while(result.next()){
+                
+                r = new Requete();
+                
+                r.setReqcode(result.getString(1));
+                r.setReqobj(result.getString(2));
+                r.setReqmotif(result.getString(3));
+                r.setReqtype(result.getString(4));
+                r.setReqstatut(result.getString(5));
+                r.setReqdate(result.getDate(6));
+                r.setUsrcode(result.getString(7));
+                r.setAppcode(result.getString(8));
+                
+                liste.add(r);
+            }
+                        
+            prep.close();
+            result.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return liste;
+    }
+
+    @Override
+    public List<Requete> newRequest() {
+
+        List<Requete> liste = new ArrayList();
+        Requete r;
+        
+        query = "select *  from Requests where reqstatut = 'Nouveau' ";
+            
+        try {
+            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            result = prep.executeQuery();
+            
+            while(result.next()){
+                
+                r = new Requete();
+                
+                r.setReqcode(result.getString(1));
+                r.setReqobj(result.getString(2));
+                r.setReqmotif(result.getString(3));
+                r.setReqtype(result.getString(4));
+                r.setReqstatut(result.getString(5));
+                r.setReqdate(result.getDate(6));
+                r.setUsrcode(result.getString(7));
+                r.setAppcode(result.getString(8));
+                
+                liste.add(r);
+            }
+                        
+            prep.close();
+            result.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return liste;
+
+    }
+
+    @Override
+    public List<Requete> ValidatedRequest() {
+
+        List<Requete> liste = new ArrayList();
+        Requete r;
+        
+        query = "select *  from Requests where reqstatut = 'Validé' ";
+            
+        try {
+            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            result = prep.executeQuery();
+            
+            while(result.next()){
+                
+                r = new Requete();
+                
+                r.setReqcode(result.getString(1));
+                r.setReqobj(result.getString(2));
+                r.setReqmotif(result.getString(3));
+                r.setReqtype(result.getString(4));
+                r.setReqstatut(result.getString(5));
+                r.setReqdate(result.getDate(6));
+                r.setUsrcode(result.getString(7));
+                r.setAppcode(result.getString(8));
+                
+                liste.add(r);
+            }
+                        
+            prep.close();
+            result.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return liste;
+
+    }
+
+    @Override
+    public List<Requete> AssignedRequest() {
+
+        List<Requete> liste = new ArrayList();
+        Requete r;
+        
+        query = "select *  from Requests where reqstatut = 'Assigné' ";
+            
+        try {
+            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            result = prep.executeQuery();
+            
+            while(result.next()){
+                
+                r = new Requete();
+                
+                r.setReqcode(result.getString(1));
+                r.setReqobj(result.getString(2));
+                r.setReqmotif(result.getString(3));
+                r.setReqtype(result.getString(4));
+                r.setReqstatut(result.getString(5));
+                r.setReqdate(result.getDate(6));
+                r.setUsrcode(result.getString(7));
+                r.setAppcode(result.getString(8));
+                
+                liste.add(r);
+            }
+                        
+            prep.close();
+            result.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return liste;
+
+    }
+
+    @Override
+    public List<Requete> DoneRequest() {
+        List<Requete> liste = new ArrayList();
+        Requete r;
+        
+        query = "select *  from Requests where reqstatut = 'Traité' ";
             
         try {
             prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);

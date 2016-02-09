@@ -11,6 +11,33 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        
+        <p:dialog closable="true" closeOnEscape="true" dynamic="true" 
+                  header="Supprimer une Requête" widgetVar="editDialog"
+                  modal="true">
+            
+            <h:form id="editform">
+                
+                <p:growl globalOnly="true" life="3000" id="msg"/>
+                
+                <p:panelGrid columns="2" style="border: none">
+                    <p:outputLabel value="Code"/>
+                    <p:inputText value="#{homeMB.r2.reqcode}"/>
+
+                    <p:outputLabel value="Objet"/>
+                    <p:inputText value="#{homeMB.r2.reqobj}"/>
+
+                    <p:outputLabel value="Motif"/>
+                    <p:inputTextarea value="#{homeMB.r2.reqmotif}"/>
+
+                    <p:outputLabel value="User"/>
+                    <p:selectOneListbox/>
+                    
+                    <p:outputLabel value="Application"/>
+                    <p:selectOneListbox/>
+                    
+                    <p:commandButton value="Modifier" action="#{homeMB.edit()}" update="@all"/>
+                </p:panelGrid>             
+            </h:form>            
+        </p:dialog>
     </cc:implementation>
 </html>

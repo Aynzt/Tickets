@@ -1,12 +1,77 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:autre="http://java.sun.com/jsf/composite/ezcomp/autres"
+      xmlns:val="http://xmlns.jcp.org/jsf/composite/ezcomp/validation">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Validation</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <p:layout>
+            <p:layoutUnit position="center">
+                <f:facet name="header">
+                    <autre:Header NomPage="Validation"/>
+                </f:facet>
+                               
+                <h:form>
+                    <p:toolbar style="margin-top: 20px; margin-bottom: 15px">
+                        <f:facet name="right">
+                            <p:menuButton value="Options">
+                                
+                                <p:menuitem value=" Valider une requête" onclick="PF('addDialog').show()"/>
+                                
+                            </p:menuButton>
+                        </f:facet>
+                        <f:facet name="left">                                                          
+                                                           
+                        </f:facet>
+                    </p:toolbar>
+                    
+                    <p:dataTable value="#{validationMB.liste}" var="item" selection="#{validationMB.v2}"
+                                 selectionMode="single" paginator="true" paginatorPosition="bottom" 
+                                 rows="20" rowKey="#{item.reqcode}" style="margin-bottom: 20px">
+                        <p:column>
+                            <p:rowToggler/>
+                        </p:column>
+                        
+                        <p:column headerText="Code">
+                            <p:outputLabel value="#{item.reqcode}"/>
+                        </p:column>
+                        <p:column headerText="Valideur">
+                            <p:outputLabel value="#{item.usrcode}"/>
+                        </p:column>
+                        <p:column headerText="Date">
+                            <p:outputLabel value="#{item.datevalidation}"/>
+                        </p:column>
+                                                
+                        <p:rowExpansion>                            
+                            <h:form>
+                                <p:panelGrid columns="2" style="border: none">
+                                    <p:outputLabel value="Code Requête"/>
+                                    <p:outputLabel value="#{validationMB.v2.reqcode}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="valideur"/>
+                                    <p:outputLabel value="#{validationMB.v2.usrcode}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="date Validation"/>
+                                    <p:outputLabel value="#{validationMB.v2.datevalidation}" style="text-transform: capitalize"/>
+                                                                        
+                                </p:panelGrid>
+                            </h:form>                            
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </h:form>                
+                
+                <f:facet name="footer">
+                    <autre:Footer/>
+                </f:facet>
+            </p:layoutUnit>
+        </p:layout>
+        
+        <val:add/>
     </h:body>
 </html>
 

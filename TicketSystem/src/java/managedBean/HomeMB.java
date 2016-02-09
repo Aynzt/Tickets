@@ -26,6 +26,12 @@ public class HomeMB {
     Requete r;
     Requete r2;
     List<Requete> liste;
+    List<Requete> oliste;
+    List<Requete> newR;
+    List<Requete> valideR;
+    List<Requete> traiteR;
+    List<Requete> assigneR;
+    
     RequeteImpl impl = new RequeteImpl();
     /**
      * Creates a new instance of HomeMB
@@ -60,6 +66,48 @@ public class HomeMB {
     public void setListe(List<Requete> liste) {
         this.liste = liste;
     }
+
+    public List<Requete> getNewR() {
+        return impl.newRequest();
+    }
+
+    public void setNewR(List<Requete> newR) {
+        this.newR = newR;
+    }
+
+    public List<Requete> getValideR() {
+        return impl.ValidatedRequest();
+    }
+
+    public void setValideR(List<Requete> valideR) {
+        this.valideR = valideR;
+    }
+
+    public List<Requete> getTraiteR() {
+        return impl.DoneRequest();
+    }
+
+    public void setTraiteR(List<Requete> traiteR) {
+        this.traiteR = traiteR;
+    }
+
+    public List<Requete> getAssigneR() {
+        return impl.AssignedRequest();
+    }
+
+    public void setAssigneR(List<Requete> assigneR) {
+        this.assigneR = assigneR;
+    }
+
+    public List<Requete> getOliste() {
+        return oliste;
+    }
+
+    public void setOliste(List<Requete> oliste) {
+        this.oliste = oliste;
+    }
+    
+    
     
     public void ajouterRFA(){
         
@@ -85,7 +133,7 @@ public class HomeMB {
                         
     }
     
-    public void modifier(){
+    public void edit(){
         
         impl.modifier(r);
         
@@ -94,7 +142,7 @@ public class HomeMB {
                         
     }
     
-    public void supprimer(){
+    public void delete(){
         
         impl.supprimer(r);
         

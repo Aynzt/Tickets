@@ -5,11 +5,12 @@
 
     <!-- INTERFACE -->
     <cc:interface>
+        <cc:attribute name="NomPage" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <h1>Accueil</h1>
+        <h1>#{cc.attrs.NomPage}</h1>
         <hr/>
     </cc:implementation>
 </html>

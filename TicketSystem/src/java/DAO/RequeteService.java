@@ -21,4 +21,12 @@ public interface RequeteService {
     public void supprimer(Requete r);
     
     public List<Requete> lister();
+    
+    public List<Requete> newRequest();
+    
+    public List<Requete> ValidatedRequest();
+            
+    public List<Requete> AssignedRequest();
+    
+    public List<Requete> DoneRequest();
 }
