@@ -18,14 +18,16 @@ import java.util.logging.Logger;
 public class Connexion {
     
     private static Connection conn;
-    private String url = "jdbc:mysql://localhost:3306/ticket";
+    
+    private String url = "jdbc:mysql://localhost:3306/Ticket";
     private String usr = "root";
-    private String pwd = "";
+    private String pwd = "root";
     
     private Connexion(){
         try {
             conn = DriverManager.getConnection(url, usr, pwd);
             System.out.println("Connexion Ok");
+            
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }

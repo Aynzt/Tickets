@@ -26,7 +26,7 @@ public class HomeMB {
     Requete r;
     Requete r2;
     List<Requete> liste;
-    RequeteImpl impl;
+    RequeteImpl impl = new RequeteImpl();
     /**
      * Creates a new instance of HomeMB
      */
@@ -34,8 +34,7 @@ public class HomeMB {
         
         r = new Requete();
         r2 = new Requete();
-        liste = new ArrayList<Requete>();
-        impl = new RequeteImpl();        
+        liste = new ArrayList<Requete>();         
     }
 
     public Requete getR() {
@@ -62,9 +61,23 @@ public class HomeMB {
         this.liste = liste;
     }
     
-    public void ajouter(){
+    public void ajouterRFA(){
         
         r.setReqdate(new Date(System.currentTimeMillis()));
+        r.setReqtype("RFA");
+        r.setReqstatut("Nouveau");
+        impl.ajouter(r);
+        
+        FacesMessage msg = new FacesMessage("Save Completed");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+                        
+    }
+    
+    public void ajouterRFC(){
+        
+        r.setReqdate(new Date(System.currentTimeMillis()));
+        r.setReqtype("RFC");
+        r.setReqstatut("Nouveau");
         impl.ajouter(r);
         
         FacesMessage msg = new FacesMessage("Save Completed");
@@ -74,18 +87,18 @@ public class HomeMB {
     
     public void modifier(){
         
-        impl.ajouter(r);
+        impl.modifier(r);
         
-        FacesMessage msg = new FacesMessage("Save Completed");
+        FacesMessage msg = new FacesMessage("Update Completed");
         FacesContext.getCurrentInstance().addMessage(null, msg);
                         
     }
     
     public void supprimer(){
         
-        impl.ajouter(r);
+        impl.supprimer(r);
         
-        FacesMessage msg = new FacesMessage("Save Completed");
+        FacesMessage msg = new FacesMessage("Delete Completed");
         FacesContext.getCurrentInstance().addMessage(null, msg);
                         
     }

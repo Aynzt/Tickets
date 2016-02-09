@@ -30,8 +30,7 @@ public class RequeteImpl implements RequeteService{
 
     public RequeteImpl() {
         conn = Connexion.getInstance();
-    }
-    
+    }    
         
     @Override
     public void ajouter(Requete r) {

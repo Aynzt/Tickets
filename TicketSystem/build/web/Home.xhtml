@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:autre="http://java.sun.com/jsf/composite/ezcomp/autres">
+      xmlns:autre="http://java.sun.com/jsf/composite/ezcomp/autres"
+      xmlns:req="http://xmlns.jcp.org/jsf/composite/ezcomp/requete">
     <h:head>
         <title>Accueil</title>
     </h:head>
@@ -38,10 +39,34 @@
                 </h:form>
                 
                 <h:form>
+                    <p:toolbar style="margin-top: 20px">
+                        <f:facet name="left">
+                            <p:menuButton value="Options">
+                                
+                                <p:menuitem value=" Ajouter RFA" onclick="PF('addDialog').show()"/>
+                                
+                                <p:separator/>
+                                
+                                <p:menuitem value=" Ajouter RFC" onclick="PF('addDialog2').show()"/>       
+                                
+                                <p:separator/>
+                                
+                                <p:menuitem value="Modifier"/>
+                                
+                                <p:separator/>
+                                
+                                <p:menuitem value="Supprimer"/>                                
+                            </p:menuButton>
+                        </f:facet>
+                    </p:toolbar>
+                    
                     <p:dataTable value="#{homeMB.liste}" var="item" selection="#{homeMB.r2}"
                                  selectionMode="single" paginator="true" paginatorPosition="bottom" 
-                                 rows="20" rowKey="#{item.reqcode}">
-                                           
+                                 rows="20" rowKey="#{item.reqcode}" style="margin-bottom: 20px">
+                        <p:column>
+                            <p:rowToggler/>
+                        </p:column>
+                        
                         <p:column headerText="Code">
                             <p:outputLabel value="#{item.reqcode}"/>
                         </p:column>
@@ -58,6 +83,35 @@
                             <p:outputLabel value="#{item.reqstatut}"/>
                         </p:column> 
                         
+                        <p:rowExpansion>                            
+                            <h:form>
+                                <p:panelGrid columns="2" style="border: none">
+                                    <p:outputLabel value="Code"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqcode}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="Objet"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqobj}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="Motif"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqmotif}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="Type"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqtype}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="Statut"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqstatut}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="User"/>
+                                    <p:outputLabel value="#{homeMB.r2.usrcode}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="App"/>
+                                    <p:outputLabel value="#{homeMB.r2.appcode}" style="text-transform: capitalize"/>
+                                    
+                                    <p:outputLabel value="Date"/>
+                                    <p:outputLabel value="#{homeMB.r2.reqdate}" style="text-transform: capitalize"/>
+                                </p:panelGrid>
+                            </h:form>                            
+                        </p:rowExpansion>
                     </p:dataTable>
                 </h:form>                
                 
@@ -66,6 +120,10 @@
                 </f:facet>
             </p:layoutUnit>
         </p:layout>
+        
+        <req:Add/>
+        <req:Add2/>
+        
     </h:body>
 </html>
 

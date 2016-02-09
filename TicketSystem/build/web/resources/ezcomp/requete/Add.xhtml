@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -9,5 +11,33 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <p:dialog closable="true" closeOnEscape="true" dynamic="true" 
+                  header="Ajouter une Requête" widgetVar="addDialog"
+                  modal="true">
+            
+            <h:form id="addForm">
+                
+                <p:growl globalOnly="true" life="3000" id="msg"/>
+                
+                <p:panelGrid columns="2" style="border: none">
+                    <p:outputLabel value="Code"/>
+                    <p:inputText value="#{homeMB.r.reqcode}"/>
+
+                    <p:outputLabel value="Objet"/>
+                    <p:inputText value="#{homeMB.r.reqobj}"/>
+
+                    <p:outputLabel value="Motif"/>
+                    <p:inputTextarea value="#{homeMB.r.reqmotif}"/>
+
+                    <p:outputLabel value="User"/>
+                    <p:selectOneListbox/>
+                    
+                    <p:outputLabel value="Application"/>
+                    <p:selectOneListbox/>
+                    
+                    <p:commandButton value="Ajouter" action="#{homeMB.ajouterRFA()}" update="@all"/>
+                </p:panelGrid>             
+            </h:form>            
+        </p:dialog>
     </cc:implementation>
 </html>
