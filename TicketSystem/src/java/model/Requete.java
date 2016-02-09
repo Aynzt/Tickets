@@ -13,71 +13,95 @@ import java.sql.Date;
  */
 public class Requete {
     
-    private String code;
-    private String mat;
-    private String obj;
-    private String mot;
-    private String type;
-    private Date dcreation;
+    private String reqcode;
+    private String reqobj;
+    private String reqmotif;
+    private String reqtype;
+    private String reqstatut;
+    private String usrcode;
+    private String appcode;
+    private Date reqdate;
 
     public Requete() {
     }
 
-    public Requete(String code, String mat, String obj, String mot, String type, Date dcreation) {
-        this.code = code;
-        this.mat = mat;
-        this.obj = obj;
-        this.mot = mot;
-        this.type = type;
-        this.dcreation = dcreation;
+    public Requete(String reqcode, String reqobj, String reqmotif, String reqtype, String reqstatut, String usrcode, String appcode, Date reqdate) {
+        this.reqcode = reqcode;
+        this.reqobj = reqobj;
+        this.reqmotif = reqmotif;
+        this.reqtype = reqtype;
+        this.reqstatut = reqstatut;
+        this.usrcode = usrcode;
+        this.appcode = appcode;
+        this.reqdate = reqdate;
     }
 
-    public String getCode() {
-        return code;
+    public String getReqcode() {
+        return reqcode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setReqcode(String reqcode) {
+        this.reqcode = reqcode;
     }
 
-    public String getMat() {
-        return mat;
+    public String getReqobj() {
+        return reqobj;
     }
 
-    public void setMat(String mat) {
-        this.mat = mat;
+    public void setReqobj(String reqobj) {
+        this.reqobj = reqobj;
     }
 
-    public String getObj() {
-        return obj;
+    public String getReqmotif() {
+        return reqmotif;
     }
 
-    public void setObj(String obj) {
-        this.obj = obj;
+    public void setReqmotif(String reqmotif) {
+        this.reqmotif = reqmotif;
     }
 
-    public String getMot() {
-        return mot;
+    public String getReqtype() {
+        return reqtype;
     }
 
-    public void setMot(String mot) {
-        this.mot = mot;
+    public void setReqtype(String reqtype) {
+        this.reqtype = reqtype;
     }
 
-    public String getType() {
-        return type;
+    public String getReqstatut() {
+        return reqstatut;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setReqstatut(String reqstatut) {
+        this.reqstatut = reqstatut;
     }
 
-    public Date getDcreation() {
-        return dcreation;
+    public String getUsrcode() {
+        return usrcode;
     }
 
-    public void setDcreation(Date dcreation) {
-        this.dcreation = dcreation;
+    public void setUsrcode(String usrcode) {
+        this.usrcode = usrcode;
     }
+
+    public String getAppcode() {
+        return appcode;
+    }
+
+    public void setAppcode(String appcode) {
+        this.appcode = appcode;
+    }
+
+    public Date getReqdate() {
+        return reqdate;
+    }
+
+    public void setReqdate(Date reqdate) {
+        this.reqdate = reqdate;
+    }
+
+   
+
+    
         
 }

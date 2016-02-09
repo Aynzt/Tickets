@@ -23,32 +23,41 @@ import model.Requete;
  */
 public class RequeteImpl implements RequeteService{
 
-    Connection conn = Connexion.getInstance();
+    Connection conn;
     PreparedStatement prep;
     ResultSet result;
     String query;
+
+    public RequeteImpl() {
+        conn = Connexion.getInstance();
+    }
     
+        
     @Override
     public void ajouter(Requete r) {
 
         try {
-            query = "INSERT INTO requête VALUES(?,?,?,?,?,?)";
+            query = "insert into Requests values(?.?.?.?.?.?.?.?)"; 
             
-            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            prep = conn.prepareStatement(query);
             
-            prep.setString(1, r.getCode());
-            prep.setString(2, r.getMat());
-            prep.setString(3, r.getObj());
-            prep.setString(4, r.getMot());
-            prep.setString(5, r.getType());
-            prep.setDate(6, r.getDcreation());
+            prep.setString(1, r.getReqcode());
+            prep.setString(2, r.getReqobj());
+            prep.setString(3, r.getReqmotif());
+            prep.setString(4, r.getReqtype());
+            prep.setString(5, r.getReqstatut());
+            prep.setDate(6, r.getReqdate());
+            prep.setString(7, r.getUsrcode());
+            prep.setString(8, r.getAppcode());
             
             prep.executeUpdate();
             
-            prep.close();            
+            prep.close();
         } catch (SQLException ex) {
             Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
         
     }
 
@@ -56,16 +65,23 @@ public class RequeteImpl implements RequeteService{
     public void modifier(Requete r) {
 
         try {
-            query = "UPDATE Requests SET MAT = ?, OBJ = ?, MOT = ? WHERE CODE = ?";
-            
-            prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            
-            prep.setString(1, r.getMat());
-            prep.setString(2, r.getObj());
-            prep.setString(3, r.getMot());
-            prep.setString(4, r.getType());
-            prep.setString(5, r.getCode());
+            query = "update Requests set reqobj = ?, reqmotif = ?, reqtype = ?, reqstatut = ?, usrcode = ?, appcode = ? where reqcode = ?";
                        
+            prep = conn.prepareStatement(query);
+            
+            
+            prep.setString(1, r.getReqobj());
+            prep.setString(2, r.getReqmotif());
+            prep.setString(3, r.getReqtype());
+            prep.setString(4, r.getReqstatut());
+            
+            //prep.setDate(6, r.getReqdate());
+           
+            prep.setString(5, r.getUsrcode());
+            prep.setString(6, r.getAppcode()); 
+            
+            prep.setString(7, r.getReqcode());
+                    
             prep.executeUpdate();
             
             prep.close();
@@ -79,11 +95,11 @@ public class RequeteImpl implements RequeteService{
     public void supprimer(Requete r) {
         
         try {
-            query = "DELETE requête WHERE CODE = ?";
+            query = "DELETE Requests WHERE reqcode = ?";
             
             prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             
-            prep.setString(1, r.getCode());
+            prep.setString(1, r.getReqcode());
                        
             prep.executeUpdate();
             
@@ -100,7 +116,7 @@ public class RequeteImpl implements RequeteService{
         List<Requete> liste = new ArrayList();
         Requete r;
         
-        query = "SELECT * FROM requête";
+        query = "select *  from requests";
             
         try {
             prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -111,18 +127,21 @@ public class RequeteImpl implements RequeteService{
                 
                 r = new Requete();
                 
-                r.setCode(result.getString(1));
-                r.setMat(result.getString(2));
-                r.setObj(result.getString(3));
-                r.setMot(result.getString(4));
-                r.setType(result.getString(5));
-                r.setDcreation(result.getDate(6));                
+                r.setReqcode(result.getString(1));
+                r.setReqobj(result.getString(2));
+                r.setReqmotif(result.getString(3));
+                r.setReqtype(result.getString(4));
+                r.setReqstatut(result.getString(5));
+                r.setReqdate(result.getDate(6));
+                r.setUsrcode(result.getString(7));
+                r.setAppcode(result.getString(8));
                 
                 liste.add(r);
             }
                         
             prep.close();
             result.close();
+            
         } catch (SQLException ex) {
             Logger.getLogger(RequeteImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

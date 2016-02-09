@@ -38,8 +38,26 @@
                 </h:form>
                 
                 <h:form>
-                    <p:dataTable>
-                    
+                    <p:dataTable value="#{homeMB.liste}" var="item" selection="#{homeMB.r2}"
+                                 selectionMode="single" paginator="true" paginatorPosition="bottom" 
+                                 rows="20" rowKey="#{item.reqcode}">
+                                           
+                        <p:column headerText="Code">
+                            <p:outputLabel value="#{item.reqcode}"/>
+                        </p:column>
+                        <p:column headerText="Objet">
+                            <p:outputLabel value="#{item.reqobj}"/>
+                        </p:column>
+                        <p:column headerText="Motif">
+                            <p:outputLabel value="#{item.reqmotif}"/>
+                        </p:column>
+                        <p:column headerText="Type">
+                            <p:outputLabel value="#{item.reqtype}"/>
+                        </p:column>  
+                        <p:column headerText="Statut">
+                            <p:outputLabel value="#{item.reqstatut}"/>
+                        </p:column> 
+                        
                     </p:dataTable>
                 </h:form>                
                 
