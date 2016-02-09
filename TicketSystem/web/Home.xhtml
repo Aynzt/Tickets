@@ -15,21 +15,33 @@
                     <autre:Header/>
                 </f:facet>
                 
-                <p:menubar>
-                    <p:submenu label="Module">
-                        <p:menuitem value="Validation"/>
-                        <p:menuitem value="Traitement"/>
-                        <p:menuitem value="Transfert"/>
-                        <p:menuitem value="Assignation"/>
-                    </p:submenu>
+                <h:form>
+                    <p:menubar>
+                        <p:submenu label="Module">
+                            <p:menuitem value="Validation"/>
+                            <p:separator/>
+                            <p:menuitem value="Traitement"/>
+                            <p:separator/>
+                            <p:menuitem value="Transfert"/>
+                            <p:separator/>
+                            <p:menuitem value="Assignation"/>
+                        </p:submenu>
+
+                        <p:submenu label="Options">
+                            <p:menuitem value="Utilisateur"/>
+                            <p:separator/>
+                            <p:menuitem value="Service"/>
+                            <p:separator/>
+                            <p:menuitem value="Appliation"/>
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+                
+                <h:form>
+                    <p:dataTable>
                     
-                    <p:submenu label="Options">
-                        <p:menuitem/>
-                        <p:menuitem/>
-                        <p:menuitem/>
-                        <p:menuitem/>
-                    </p:submenu>
-                </p:menubar>
+                    </p:dataTable>
+                </h:form>                
                 
                 <f:facet name="footer">
                     <autre:Footer/>

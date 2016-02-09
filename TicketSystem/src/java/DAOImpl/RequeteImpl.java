@@ -56,7 +56,7 @@ public class RequeteImpl implements RequeteService{
     public void modifier(Requete r) {
 
         try {
-            query = "UPDATE requête SET MAT = ?, OBJ = ?, MOT = ? WHERE CODE = ?";
+            query = "UPDATE Requests SET MAT = ?, OBJ = ?, MOT = ? WHERE CODE = ?";
             
             prep = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             
