@@ -1,12 +1,68 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:hd="http://xmlns.jcp.org/jsf/composite/ezcomp/autres"
+      xmlns:utilisateur="http://xmlns.jcp.org/jsf/composite/ezcomp/utilisateur"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <p:layout fullPage="true">
+            <p:layoutUnit position="center" >
+                <hd:Header />
+                <utilisateur:Update />
+                <utilisateur:Add />
+                <br/>
+                <p:dataTable var="ut" value="#{indexMB.lister()}" filteredValue="#{indexMB.usrlist}">
+            
+                    <p:column>
+                        <h:form>
+                            <p:commandButton icon="ui-icon-pencil" onclick="PF('utilisateurUpdate').show()">
+                            <f:setPropertyActionListener target="#{indexMB.usm}" value="#{ut}" />
+                            <f:ajax render="@form" />
+                            </p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column filterBy="#{ut.usrcode}" headerText="Code" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrcode}" />
+                    </p:column>
+
+                    <p:column filterBy="#{ut.usrname}" headerText="Nom" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrname}" />
+                    </p:column>
+
+                    <p:column filterBy="#{ut.usrsubname}" headerText="Prénom" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrsubname}" />
+                    </p:column>
+
+                    <p:column filterBy="#{ut.usrtype}" headerText="Type" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrtype}" />
+                    </p:column>
+
+                    <p:column filterBy="#{ut.usrmail}" headerText="Email" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrmail}" />
+                    </p:column>
+                    
+                    <p:column filterBy="#{ut.usrpwd}" headerText="Mot de passe" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.usrpwd}" />
+                    </p:column>
+                    
+                    <p:column filterBy="#{ut.appcode}" headerText="Code application" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.appcode}" />
+                    </p:column>
+                    
+                    <p:column filterBy="#{ut.servcode}" headerText="Code service" filterMatchMode="contains" filterable="true">
+                        <h:outputText value="#{ut.servcode}" />
+                    </p:column>
+
+                </p:dataTable>
+                <p:growl life="7000"/>
+                
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>
-

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:dialog header="Modifier utilisateur" widgetVar="utilisateurUpdate" width="1000">
+            
+            <h:form id="formulaire">
+                <b:row>    
+                    <b:column col-sm="12" col-lg="6">
+                        <div>
+                            <h:outputLabel for="usrcode" value="Code"></h:outputLabel>
+                            <div><h:inputText id="usrcode" required="true" class="form-control" requiredMessage="Veuillez entrer un code !!!" value="#{indexMB.usm.usrcode}"></h:inputText></div>
+                            <h:message id="usrcodemsg" for="usrcode" errorClass="erreur" ></h:message>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="usrname" value="Nom"></h:outputLabel>
+                            <div><h:inputText id="usrname" required="true" class="form-control" requiredMessage="Veuillez entrer un nom !!!" value="#{indexMB.usm.usrname}"></h:inputText></div>
+                            <h:message id="usrnamemsg" for="usrname" errorClass="erreur" ></h:message>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="usrsubname" value="Prénom"></h:outputLabel>
+                            <div><h:inputText id="usrsubname" class="form-control" value="#{indexMB.usm.usrsubname}"></h:inputText></div>
+                            <h:message id="usrsubnamemsg" for="usrsubname" errorClass="erreur" ></h:message>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="usrtype" value="Type"></h:outputLabel>
+                            <div><h:inputText id="usrtype" required="true" class="form-control" requiredMessage="Veuillez entrer un type !!!" value="#{indexMB.usm.usrtype}"></h:inputText></div>
+                            <h:message id="usrtypemsg" for="usrtype" errorClass="erreur" ></h:message>
+                        </div>
+                    </b:column>
+                    <b:column col-sm="12" col-lg="6">
+                        <div>
+                            <h:outputLabel for="usrmail" value="Email"></h:outputLabel>
+                            <div><h:inputText id="usrmail" required="true" class="form-control" requiredMessage="Veuillez entrer un email !!!" value="#{indexMB.usm.usrmail}"></h:inputText></div>
+                            <h:message id="usrmailmsg" for="usrmail" errorClass="erreur" ></h:message>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="usrpwd" value="Mot de passe"></h:outputLabel>
+                            <div><h:inputSecret id="usrpwd" required="true" class="form-control" requiredMessage="Veuillez entrer un mot de passe !!!" value="#{indexMB.usm.usrpwd}"></h:inputSecret></div>
+                            <h:message id="usrpwdmsg" for="usrpwd" errorClass="erreur" ></h:message>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="appcode" value="Code application"></h:outputLabel>
+                            <h:selectOneListbox id="appcode" class="form-control" value="#{indexMB.usm.appcode}" size="1" >
+                                <f:selectItems var="ac" itemLabel="#{ac}" itemValue="#{ac}" value="#{indexMB.listerAppcode()}" />
+                            </h:selectOneListbox>
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel for="servcode" value="Code du service"></h:outputLabel>
+                            <h:selectOneListbox id="servcode" class="form-control" value="#{indexMB.usm.servcode}" size="1" >
+                                <f:selectItems var="sc" itemLabel="#{sc}" itemValue="#{sc}" value="#{indexMB.listerServcode()}" />
+                            </h:selectOneListbox>
+                        </div>
+                        <br/>
+                            <div>
+                                <p:commandButton value="Modifier" action="#{indexMB.modifier()}" ajax="false"></p:commandButton>
+                            </div>
+                    </b:column>
+                </b:row>
+            </h:form>
+        </p:dialog>
+    </cc:implementation>
+</html>

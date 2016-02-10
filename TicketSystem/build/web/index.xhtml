@@ -1,14 +1,57 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Connexion</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <p:layout fullPage="true" id="layoutfullpage">
+            <p:layoutUnit position="center" id="layoutunitcenter">
+            <b:row style="text-align: center;" id="rowimage">
+                <p:graphicImage value="resources/images/ticketing system.jpg" width="200px;" style="border-radius: 7px;" id="graphicimage"/>
+            </b:row>
+            <b:row id="rowhr1">
+                <b:column col-sm="12" col-lg="6" offset-lg="3" id="columnhr1"><hr align="center" style="color: black;"  id="hr1"/></b:column>
+            </b:row>
+            <b:row id="rowform">    
+                <b:column col-sm="12" col-lg="6" offset-lg="3" style="margin-top: 50px; margin-bottom: 100px;" id="columnform">
+                    <h:form id="formulaire">
+                        <fieldset id="fieldset">
+                            <legend><h:outputText value="Authentification"/></legend>
+
+                                <div>
+                                    <h:outputLabel for="login" value="Identifiant"></h:outputLabel>
+                                    <div><h:inputText id="login" required="true" class="form-control" requiredMessage="Veuillez entrer un identifiant !!!" value="#{indexMB.user.usrmail}"></h:inputText></div>
+                                    <h:message id="loginMessage" for="login" errorClass="erreur" ></h:message>
+                                </div>
+                            <br/>
+                                <div>    
+                                    <h:outputLabel for="motdepasse" value="Mot de passe"></h:outputLabel>
+                                    <div><h:inputSecret id="motdepasse" class="form-control" required="true" requiredMessage="Veuillez entrer un mot de passe !!!" value="#{indexMB.user.usrpwd}"></h:inputSecret></div>
+                                    <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur"></h:message>
+                                </div>
+                            <br/>
+                            <div>
+                                <p:commandButton value="Connecter" action="#{indexMB.connecter()}" ajax="false"></p:commandButton>
+                            </div>
+
+                            <p:growl globalOnly="true" life="4000"/>
+                        </fieldset>
+                    </h:form>
+                        </b:column>
+            </b:row>        
+            <b:row><b:column col-sm="12" col-lg="6" offset-lg="3"><hr align="center" style="color: black;" /></b:column></b:row>        
+            <b:row>
+                <b:column col-sm="12" col-lg="6" offset-lg="3">
+                    <b:column col-xs="12" col-sm="2"><b:iconAwesome name="fa fa-copyright" /> 2016-NGATCHA-KUATE</b:column>
+                    <b:column col-xs="12" offset-sm="8" col-sm="2">Version 1.0</b:column>
+                </b:column>
+            </b:row>
+                </p:layoutUnit>
+            </p:layout>
+        
     </h:body>
 </html>
-
