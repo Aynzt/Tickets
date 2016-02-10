@@ -40,7 +40,12 @@ public class HomeMB {
         
         r = new Requete();
         r2 = new Requete();
-        liste = new ArrayList<Requete>();         
+        liste = new ArrayList<Requete>(); 
+        oliste = new ArrayList<Requete>();  
+        newR = new ArrayList<Requete>(); 
+        valideR = new ArrayList<Requete>(); 
+        traiteR = new ArrayList<Requete>(); 
+        assigneR = new ArrayList<Requete>(); 
     }
 
     public Requete getR() {
